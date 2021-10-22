@@ -29,6 +29,20 @@ function getById(id) {
     return document.getElementById(id);
 }
 function displayGame(myGame) {
+    var displayDiv = getById("display");
+    var gameHeading = document.createElement("h2");
+    gameHeading.innerText = myGame.title;
+    var gameInfo = document.createElement("p");
+    var gameMedia = "";
+    if (myGame.isDigitalOnly) {
+        gameMedia = "This is a digital only game.";
+    }
+    else {
+        gameMedia = "You can come buy a physical copy!";
+    }
+    gameInfo.innerText = myGame.title + " has a rating of " + myGame.rating + ". It costs $" + myGame.price.toFixed(2) + ". " + gameMedia;
+    displayDiv.appendChild(gameHeading);
+    displayDiv.appendChild(gameInfo);
 }
 function isAllDataValid() {
     return true;
