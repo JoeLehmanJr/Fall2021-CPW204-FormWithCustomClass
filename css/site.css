@@ -11,3 +11,25 @@ div{
 	display: table;   /* Allow the centering to work */
 	margin: 0 auto;
 }
+
+#validation-summary {
+    list-style-type: square;
+}
+
+.rating-error{
+    font-style: italic;
+    font-weight: bolder;
+    Color:Orange;
+}
+
+.price-error{
+    font-style: italic;
+    font-weight: bolder;
+    color:purple;
+}
+
+.title-error{
+    font-style: italic;
+    font-weight: bolder;
+    color: Red;
+}

@@ -17,6 +17,16 @@ function addVideoGame() {
         var game = getVideoGame();
         displayGame(game);
     }
+    else {
+        displayRatingLink();
+    }
+}
+function displayRatingLink() {
+    var ratingsElement = document.querySelectorAll(".rating-error");
+    for (var i = 0; i < ratingsElement.length; i++) {
+        var currElem = ratingsElement[i];
+        currElem.innerHTML += " <a target='_blank' href='https://www.esrb.org'>Click here for more information</a>";
+    }
 }
 function getVideoGame() {
     var game = new videoGame();
@@ -57,24 +67,25 @@ function isAllDataValid() {
     var title = getInputById("title").value;
     if (title == "") {
         isValid = false;
-        addErrorMessage("Title is required!");
+        addErrMsgWithClass("Title is required!", "title-error");
     }
     var price = getInputById("price").value;
     var priceValue = parseFloat(price);
     if (price == "" || isNaN(priceValue)) {
         isValid = false;
-        addErrorMessage("Price is required and must be a number.");
+        addErrMsgWithClass("Price is required and must be a number.", "price-error");
     }
     var rating = getById("rating").value;
     if (rating == "") {
         isValid = false;
-        addErrorMessage("You must choose a rating!");
+        addErrMsgWithClass("You must choose a rating!", "rating-error");
     }
     return isValid;
 }
-function addErrorMessage(errMsg) {
+function addErrMsgWithClass(errMsg, cssClass) {
     var errSummary = getById("validation-summary");
     var errItem = document.createElement("li");
+    errItem.classList.add(cssClass);
     errItem.innerText = errMsg;
     errSummary.appendChild(errItem);
 }
