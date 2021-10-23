@@ -10,10 +10,7 @@
 <body>
     <h1>Add Video Game</h1>
     <div class="table">
-        <ul id="validation-summary">
-
-        </ul>
-
+        <ul id="validation-summary"></ul>
     </div>
     <form>
         <div class="table">
@@ -25,7 +22,11 @@
             <input type="text"  id="price">
         </div>
         <div class="table">
-            <label for="rating">Rating: </label>
+            <label id="description-label" for="description">Description: </label>
+            <textarea id="description" rows="5" cols="22"></textarea>
+        </div>
+        <div class="table">
+            <label id="rating-label" for="rating">Rating: </label>
             <select id="rating">
                 <option value="">Please choose a rating</option>
                 <option value="RP">RP - Rating Pending</option>
@@ -37,8 +38,8 @@
             </select>
         </div>
         <div class="table">
-            <label for="online">On line only?</label>
             <input type="checkbox" name="" id="online">
+            <label for="online">On line only?</label>
         </div>
         <div class="table">
             <input type="button" value="Add New Video Game">

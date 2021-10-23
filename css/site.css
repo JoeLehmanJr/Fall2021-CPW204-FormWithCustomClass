@@ -2,6 +2,10 @@ h1{
     text-align: center;
 }
 
+body {
+    min-width: 251px;
+}
+
 div{
     padding-top: 4px;
     padding-bottom: 4px;
@@ -10,6 +14,7 @@ div{
 .table {
 	display: table;   /* Allow the centering to work */
 	margin: 0 auto;
+    text-align: center;
 }
 
 #validation-summary {
@@ -32,4 +37,30 @@ div{
     font-style: italic;
     font-weight: bolder;
     color: Red;
+}
+
+#description-label{
+    margin-left: -45px;
+    vertical-align: top;
+    padding-right: 4px;
+}
+
+.description-error{
+    font-style: italic;
+    font-weight: bolder;
+    color:Brown;
+}
+
+@media only screen and (max-width: 319px) {
+    .table {
+        float: left;
+        text-align: left;
+        display: block;
+        width: 160px;
+
+    }
+
+    h1{
+        text-align: left;
+    }
 }

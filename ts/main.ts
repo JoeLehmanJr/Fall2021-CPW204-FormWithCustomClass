@@ -1,6 +1,7 @@
 class videoGame{
     title: string;
     price: number;
+    description: string;
     rating: string;
     isDigitalOnly: boolean;
 }
@@ -15,7 +16,7 @@ myGame.isDigitalOnly = true;
 */
 
 window.onload = function() {
-    let addBtn = 
+    let addBtn =
         <HTMLElement>document.querySelector("input[type=button]");
     addBtn.onclick = addVideoGame.bind(this);
 }
@@ -57,6 +58,9 @@ function getVideoGame():videoGame{
 
     let priceInput = <HTMLInputElement>getById("price");
     game.price = parseFloat(priceInput.value);
+
+    let descriptionInput = <HTMLInputElement>getById("description");
+    game.description = descriptionInput.value;
 
     let ratingInput = <HTMLSelectElement>getById("rating");
     game.rating = ratingInput.value;
@@ -104,7 +108,7 @@ function displayGame(myGame: videoGame):void {
     */
 
     // New way with Template literals
-    gameInfo.innerText = `${myGame.title} has a rating of ${myGame.rating}. It costs $${myGame.price.toFixed(2)}. ${gameMedia}`
+    gameInfo.innerText = `${myGame.title} has a rating of ${myGame.rating}. It costs $${myGame.price.toFixed(2)}. ${gameMedia} A description of the game would be ${myGame.description}`
 
     // Add <h2> in the <div id="display">
     displayDiv.appendChild(gameHeading);
@@ -119,7 +123,7 @@ function getInputById(id:string):HTMLInputElement {
 }
 
 
-// TODO: Add validation code
+
 function isAllDataValid(): boolean {
     let isValid = true;
 
@@ -136,21 +140,24 @@ function isAllDataValid(): boolean {
         addErrMsgWithClass("Price is required and must be a number.", "price-error");
     }
 
+    let description = getInputById("description").value;
+    if (description ==""){
+        isValid = false;
+        addErrMsgWithClass("A description is required!", "description-error");
+    }
+
     let rating= (<HTMLOptionElement>getById("rating")).value;
     if (rating == ""){
         isValid = false;
         addErrMsgWithClass("You must choose a rating!", "rating-error");
     }
-
     return isValid;
 }
-
 
 function addErrMsgWithClass(errMsg:string, cssClass:string) {
     let errSummary = getById("validation-summary");
     let errItem = document.createElement("li");
     errItem.classList.add(cssClass);
     errItem.innerText = errMsg;
-
     errSummary.appendChild(errItem);
 }

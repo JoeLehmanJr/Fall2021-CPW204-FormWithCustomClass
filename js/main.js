@@ -34,6 +34,8 @@ function getVideoGame() {
     game.title = titleInput.value;
     var priceInput = getById("price");
     game.price = parseFloat(priceInput.value);
+    var descriptionInput = getById("description");
+    game.description = descriptionInput.value;
     var ratingInput = getById("rating");
     game.rating = ratingInput.value;
     var digitalOnly = getById("online");
@@ -55,7 +57,7 @@ function displayGame(myGame) {
     else {
         gameMedia = "You can come buy a physical copy!";
     }
-    gameInfo.innerText = myGame.title + " has a rating of " + myGame.rating + ". It costs $" + myGame.price.toFixed(2) + ". " + gameMedia;
+    gameInfo.innerText = myGame.title + " has a rating of " + myGame.rating + ". It costs $" + myGame.price.toFixed(2) + ". " + gameMedia + " A description of the game would be " + myGame.description;
     displayDiv.appendChild(gameHeading);
     displayDiv.appendChild(gameInfo);
 }
@@ -74,6 +76,11 @@ function isAllDataValid() {
     if (price == "" || isNaN(priceValue)) {
         isValid = false;
         addErrMsgWithClass("Price is required and must be a number.", "price-error");
+    }
+    var description = getInputById("description").value;
+    if (description == "") {
+        isValid = false;
+        addErrMsgWithClass("A description is required!", "description-error");
     }
     var rating = getById("rating").value;
     if (rating == "") {
