@@ -19,6 +19,7 @@ div{
 
 #validation-summary {
     list-style-type: square;
+    text-align:left;
 }
 
 .rating-error{
